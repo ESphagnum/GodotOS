@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cp6vv10jleqvt"]
 
-[node name="Search" type="Control" unique_id=190433003]
+[node name="SearchPanel" type="Control" unique_id=190433003]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
