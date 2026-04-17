@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbp00a7u6ccej"]
 
 [ext_resource type="PackedScene" uid="uid://dwcgkeb111tvj" path="res://scenes/Taskbar/Taskbar.tscn" id="1_fsv5x"]
+[ext_resource type="PackedScene" uid="uid://b0q3nipespcy8" path="res://scenes/WindowWrapper.tscn" id="2_h488k"]
 
 [node name="Desktop" type="Control" unique_id=488378104]
 layout_mode = 3
@@ -40,3 +41,11 @@ layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 grow_vertical = 0
+
+[node name="WindowWrapper" parent="." unique_id=214628049 instance=ExtResource("2_h488k")]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="WindowWrapper2" parent="." unique_id=1615654512 instance=ExtResource("2_h488k")]
+layout_mode = 1
+anchors_preset = 0
