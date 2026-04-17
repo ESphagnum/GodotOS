@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwcgkeb111tvj"]
 
 [ext_resource type="PackedScene" uid="uid://cje1pnb3yuuca" path="res://scenes/Taskbar/Tray.tscn" id="1_5bq7g"]
+[ext_resource type="Script" uid="uid://bsb662cp7hrma" path="res://core/Taskbar.gd" id="1_j8ty8"]
 
 [node name="Taskbar" type="Control" unique_id=990506269]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j8ty8")
 
 [node name="Panel" type="Panel" parent="." unique_id=1450123883]
 layout_mode = 1
@@ -33,6 +35,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=83532307]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer" unique_id=2125615973]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer" unique_id=1028447263]
+clip_contents = true
 layout_mode = 2
 
 [node name="VSeparator_END" type="VSeparator" parent="Panel/HBoxContainer" unique_id=502496514]
