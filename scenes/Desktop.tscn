@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dbp00a7u6ccej"]
 
+[ext_resource type="PackedScene" uid="uid://dwcgkeb111tvj" path="res://scenes/Taskbar/Taskbar.tscn" id="1_fsv5x"]
+
 [node name="Desktop" type="Control" unique_id=488378104]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1372475647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1492033986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowsLayer" type="Control" parent="." unique_id=1277036653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Taskbar" parent="." unique_id=990506269 instance=ExtResource("1_fsv5x")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+grow_vertical = 0
