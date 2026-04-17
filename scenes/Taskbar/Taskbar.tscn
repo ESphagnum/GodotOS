@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dwcgkeb111tvj"]
+
+[ext_resource type="PackedScene" uid="uid://cje1pnb3yuuca" path="res://scenes/Taskbar/Tray.tscn" id="1_5bq7g"]
+
+[node name="Taskbar" type="Control" unique_id=990506269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1450123883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1409231014]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMenu_Button" type="Button" parent="Panel/HBoxContainer" unique_id=1726183954]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer" unique_id=1964837283]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=83532307]
+layout_mode = 2
+
+[node name="VSeparator_END" type="VSeparator" parent="Panel/HBoxContainer" unique_id=502496514]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tray" parent="Panel/HBoxContainer" unique_id=61607706 instance=ExtResource("1_5bq7g")]
+layout_mode = 2
