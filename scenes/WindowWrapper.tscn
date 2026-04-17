@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0q3nipespcy8"]
 
 [ext_resource type="Texture2D" uid="uid://c3rhmkmujy3s6" path="res://icon.svg" id="1_be5t8"]
+[ext_resource type="Script" uid="uid://b8e87y62kas4r" path="res://core/window_wrapper.gd" id="1_mxwdo"]
 
 [node name="WindowWrapper" type="Control" unique_id=214628049]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mxwdo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1901096869]
 layout_mode = 1
@@ -82,3 +84,5 @@ text = "x"
 
 [node name="Control" type="Control" parent="NinePatchRect/VBoxContainer" unique_id=1133696281]
 layout_mode = 2
+
+[connection signal="gui_input" from="NinePatchRect/VBoxContainer/Header_Panel" to="." method="_on_header_panel_gui_input"]
