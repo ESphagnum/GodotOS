@@ -4,14 +4,11 @@
 [ext_resource type="Script" uid="uid://b8e87y62kas4r" path="res://core/window_wrapper.gd" id="1_mxwdo"]
 
 [node name="WindowWrapper" type="Control" unique_id=214628049]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 script = ExtResource("1_mxwdo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1901096869]
@@ -94,5 +91,8 @@ text = "x"
 [node name="Control" type="Control" parent="NinePatchRect/VBoxContainer" unique_id=1133696281]
 layout_mode = 2
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="NinePatchRect/VBoxContainer/Header_Panel" to="." method="_on_header_panel_gui_input"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Header_Panel/HBoxContainer/Aside_Button" to="." method="_on_aside_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Header_Panel/HBoxContainer/Fullscreen_Button" to="." method="_on_fullscreen_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Header_Panel/HBoxContainer/Close_Button" to="." method="_on_close_button_pressed"]
