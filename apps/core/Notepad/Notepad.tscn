@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://o4j8501ksf7s"]
+
+[ext_resource type="Script" uid="uid://c0rlwssxsigqn" path="res://apps/core/Notepad/notepad.gd" id="1_mdw8e"]
+
+[node name="Notepad" type="Control" unique_id=1158016702]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mdw8e")
+metadata/_custom_type_script = "uid://bhlpshgjlec4l"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=577118306]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuBar" type="PanelContainer" parent="VBoxContainer" unique_id=399922655]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MenuBar" unique_id=929117325]
+layout_mode = 2
+
+[node name="FileButton" type="Button" parent="VBoxContainer/MenuBar/HBoxContainer" unique_id=1786023285]
+layout_mode = 2
+text = "File"
+
+[node name="EditButton" type="Button" parent="VBoxContainer/MenuBar/HBoxContainer" unique_id=909782688]
+layout_mode = 2
+text = "Edit"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer" unique_id=201450116]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+highlight_current_line = true
+draw_control_chars = true
