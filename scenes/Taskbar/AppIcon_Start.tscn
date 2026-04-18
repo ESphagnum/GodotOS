@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ekhiv4hr3j32"]
+
+[node name="AppIcon" type="VBoxContainer" unique_id=610252641]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2048329242]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=189495356]
+layout_mode = 2
+text = "Название"
+
+[node name="Button" type="Button" parent="." unique_id=1819139567]
+layout_mode = 2
