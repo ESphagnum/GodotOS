@@ -12,3 +12,5 @@ signal window_focused(window_ref)
 
 # Сигналы системных событий
 signal notification_sent(message: String, type: String) # Для всплывающих уведомлений
+
+signal request_file_open(file_data: Dictionary)

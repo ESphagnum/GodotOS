@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 WindowManager="*uid://er8ua7040fyo"
 Signals="*uid://rt0koebw2h80"
+VirtualFS="*uid://sy0nnns0w51j"
 
 [display]
 
