@@ -1,22 +1,22 @@
 extends Control
 class_name BaseApp
 
-var window_wrapper: Control  # Ссылка на "рамку" окна
-var config: AppConfig        # Ссылка на настройки этого приложения
+var window_wrapper: Control # Ссылка на ту самую "рамку"
+var config: AppConfig       # Ссылка на настройки
 
 func _ready():
-	# Автоматически находим обертку, в которую нас вставили
-	var parent = get_parent()
-	while parent:
-		if parent.has_method("setup_window"): # Признак нашего WindowWrapper
-			window_wrapper = parent
-			config = parent.config # Забираем конфиг из обертки
-			break
-		parent = parent.get_parent()
+    # Ищем WindowWrapper среди родителей
+    var p = get_parent()
+    while p != null:
+        if p.has_method("setup_window"): # Признак того, что это наш WindowWrapper
+            window_wrapper = p
+            config = p.config # Подтягиваем конфиг из рамки в приложение
+            break
+        p = p.get_parent()
+    
+    if window_wrapper:
+        print("Приложение ", config.app_name, " успешно связано с окном")
 
-# Стандартные функции, которые можно переопределить
-func on_focus():
-	pass
-
-func on_close_request():
-	return true # Разрешить закрытие
+func set_window_title(new_title: String):
+    if window_wrapper:
+        window_wrapper.title_label.text = new_title
