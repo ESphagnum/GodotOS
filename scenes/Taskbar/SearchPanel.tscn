@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cp6vv10jleqvt"]
 
+[ext_resource type="Script" uid="uid://dd7spwhmtn5rq" path="res://core/search_panel.gd" id="1_awfhc"]
+
 [node name="SearchPanel" type="Control" unique_id=190433003]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_awfhc")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=2030648806]
+layout_mode = 0
+offset_right = 700.0
+offset_bottom = 31.0
+placeholder_text = "Поиск приложений, параметров и документов"
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]

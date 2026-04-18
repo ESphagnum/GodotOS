@@ -3,11 +3,15 @@
 [node name="AppIcon" type="VBoxContainer" unique_id=610252641]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2048329242]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=189495356]
 layout_mode = 2
 text = "Название"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=1819139567]
 layout_mode = 2
+text = "Открыть"
