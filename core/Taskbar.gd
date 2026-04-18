@@ -12,22 +12,22 @@ func _ready():
 	# Подключаем к глобальному сигналу
 	Signals.window_opened.connect(add_application)
 	# И не забудь про закрытие
-	Signals.window_closed.connect(_on_window_closed) 
+	Signals.window_closed.connect(_on_window_closed)
+	Signals.window_focused.connect(_on_window_focused)
 	# Если окно было зарегистрировано ДО загрузки таскбара (редко, но бывает)
 	_refresh_buttons()
 
 func _on_window_focused(window):
-	# Подсвечиваем кнопку активного окна
 	for btn in app_list.get_children():
-		if btn.linked_window == window:
-			btn.flat = false # Нажатый вид
+		if btn.get("linked_window") == window:
+			# Выделяем активную кнопку (например, через самодельный стиль или modulate)
+			btn.modulate = Color(1.5, 1.5, 1.5) # Делаем ярче
 		else:
-			btn.flat = true  # Плоский вид для неактивных
-	app_button_clicked.emit(window)
+			btn.modulate = Color(1, 1, 1) # Возвращаем обычный цвет
 
 func _on_window_closed(window):
 	for btn in app_list.get_children():
-		if btn.linked_window == window:
+		if is_instance_valid(btn) and btn.linked_window == window:
 			# Анимация ухода вниз
 			var tween = create_tween().set_parallel(true)
 			tween.tween_property(btn, "position:y", btn.position.y + 50, 0.3)\
