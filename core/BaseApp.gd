@@ -1,15 +1,16 @@
 extends Control
 class_name BaseApp
 
-# Каждое приложение сможет обращаться к своему окну-родителю
-var window_wrapper: Control 
+var window_wrapper: Control  # Ссылка на "рамку" окна
+var config: AppConfig        # Ссылка на настройки этого приложения
 
 func _ready():
-	# Ищем обертку в родителях
+	# Автоматически находим обертку, в которую нас вставили
 	var parent = get_parent()
 	while parent:
-		if parent.has_method("set_active"): # Признак нашего WindowWrapper
+		if parent.has_method("setup_window"): # Признак нашего WindowWrapper
 			window_wrapper = parent
+			config = parent.config # Забираем конфиг из обертки
 			break
 		parent = parent.get_parent()
 
