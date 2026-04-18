@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AppConfig" format=3 uid="uid://d17ota3emh2to"]
+
+[ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="1_4k41m"]
+
+[resource]
+script = ExtResource("1_4k41m")
+app_name = "Task Manager"
+metadata/_custom_type_script = "uid://4jsqd024pcql"

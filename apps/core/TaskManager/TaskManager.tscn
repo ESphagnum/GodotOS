@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://djd3axpm4tqgd"]
+
+[ext_resource type="Script" uid="uid://dktxrj2nmhaul" path="res://apps/core/TaskManager/task_manager.gd" id="1_n2j5h"]
+[ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="2_tc5as"]
+
+[sub_resource type="Resource" id="Resource_h7511"]
+script = ExtResource("2_tc5as")
+app_name = "Task Manager"
+metadata/_custom_type_script = "uid://4jsqd024pcql"
+
+[node name="TaskManager" type="Control" unique_id=1685398599]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n2j5h")
+app_config = SubResource("Resource_h7511")
+metadata/_custom_type_script = "uid://bhlpshgjlec4l"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=741206560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProcessList" type="ItemList" parent="VBoxContainer" unique_id=1124550751]
+layout_mode = 2
+
+[node name="EndTaskButton" type="Button" parent="VBoxContainer" unique_id=1134577528]
+layout_mode = 2
