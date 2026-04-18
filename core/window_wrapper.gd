@@ -1,4 +1,4 @@
-extends Control
+extends BaseApp
 
 signal focused()
 signal unfocused()
@@ -6,7 +6,10 @@ signal closed()
 signal minimized()
 signal maximized()
 
-@export var app_name: String = "New App"
+# Обязательное объявление переменной для хранения имени
+var app_name: String = "New App" 
+var config: AppConfig 
+
 @onready var title_label = $NinePatchRect/VBoxContainer/Header_Panel/HBoxContainer/RichTextLabel
 @onready var header = $NinePatchRect/VBoxContainer/Header_Panel
 
@@ -16,10 +19,28 @@ var is_fullscreen = false
 var old_position = Vector2()
 var old_size = Vector2()
 
+func setup_window(app_config: AppConfig):
+	config = app_config
+	self.app_name = config.app_name
+	
+	# Установка размеров и позиции из конфига
+	custom_minimum_size = config.default_size
+	size = config.default_size
+	position = config.default_position
+	
+	# Если прога должна быть скрыта при старте
+	if config.start_minimized:
+		visible = false
+
 func _ready():
 	title_label.text = app_name
+	
+	# Регистрируем в системе
 	WindowManager.register_window(self)
-	WindowManager.set_active_window(self)
+	
+	# Делаем активным, только если оно не свернуто
+	if visible:
+		WindowManager.set_active_window(self)
 
 # Логика перемещения и фокуса
 func _on_header_panel_gui_input(event):
@@ -44,24 +65,18 @@ func set_active(active: bool):
 
 # Кнопки управления
 func _on_close_button_pressed():
-	# 1. Отключаем ввод, чтобы окно не мешало кликать по другим во время исчезновения
+	# Если в конфиге сказано "не закрывать, а сворачивать в трей"
+	if config and config.show_in_tray and not Input.is_key_pressed(KEY_SHIFT):
+		visible = false
+		minimized.emit()
+		return
+
+	# Стандартная анимация закрытия
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	# 2. Создаем анимацию исчезновения (прозрачность + небольшое уменьшение)
 	var tween = create_tween().set_parallel(true)
-	
-	# Плавное таяние (транспарант)
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	
-	# Опционально: легкое уменьшение масштаба для красоты
-	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.3)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		
-	# 3. После анимации удаляем окно
+	tween.tween_property(self, "modulate:a", 0.0, 0.3)
+	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.3)
 	tween.chain().tween_callback(queue_free)
-	
-	# Генерируем сигнал закрытия сразу (чтобы таскбар начал убирать кнопку)
 	closed.emit()
 
 
