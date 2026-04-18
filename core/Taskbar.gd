@@ -9,9 +9,10 @@ const TASK_BUTTON_SCENE = preload("res://scenes/Taskbar/TaskButton.tscn")
 @onready var start_menu = get_node("../StartMenu")
 
 func _ready():
-	# Подписываемся на события менеджера окон
-	WindowManager.window_focused.connect(_on_window_focused)
-	WindowManager.window_closed.connect(_on_window_closed)
+	# Подключаем к глобальному сигналу
+	Signals.window_opened.connect(add_application)
+	# И не забудь про закрытие
+	Signals.window_closed.connect(_on_window_closed) 
 	# Если окно было зарегистрировано ДО загрузки таскбара (редко, но бывает)
 	_refresh_buttons()
 
