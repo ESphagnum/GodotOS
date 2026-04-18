@@ -3,8 +3,10 @@ extends Control
 signal app_button_created(app_name)
 signal app_button_clicked(window)
 
-@onready var app_list = $Panel/HBoxContainer/HBoxContainer # Путь к твоему контейнеру кнопок
+@onready var app_list = $Panel/HBoxContainer/HBoxContainer
 const TASK_BUTTON_SCENE = preload("res://scenes/Taskbar/TaskButton.tscn")
+
+@onready var start_menu = get_node("../StartMenu")
 
 func _ready():
 	# Подписываемся на события менеджера окон
@@ -72,3 +74,10 @@ func _refresh_buttons():
 	for child in app_list.get_children(): child.queue_free()
 	for w in WindowManager.windows:
 		add_application(w, w.app_name)
+
+
+
+
+
+func _on_start_menu_button_toggled(toggled_on: bool) -> void:
+	Signals.start_menu_toggled.emit(toggled_on)

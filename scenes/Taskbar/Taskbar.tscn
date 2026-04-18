@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cje1pnb3yuuca" path="res://scenes/Taskbar/Tray.tscn" id="1_5bq7g"]
 [ext_resource type="Script" uid="uid://bsb662cp7hrma" path="res://core/Taskbar.gd" id="1_j8ty8"]
 
-[node name="Taskbar" type="Control" unique_id=990506269]
+[node name="Taskbar" type="Control" unique_id=273479201]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +30,8 @@ grow_vertical = 2
 
 [node name="StartMenu_Button" type="Button" parent="Panel/HBoxContainer" unique_id=1726183954]
 layout_mode = 2
+toggle_mode = true
+text = "Start"
 
 [node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer" unique_id=1964837283]
 layout_mode = 2
@@ -50,3 +52,5 @@ size_flags_horizontal = 3
 
 [node name="Tray" parent="Panel/HBoxContainer" unique_id=61607706 instance=ExtResource("1_5bq7g")]
 layout_mode = 2
+
+[connection signal="toggled" from="Panel/HBoxContainer/StartMenu_Button" to="." method="_on_start_menu_button_toggled"]
