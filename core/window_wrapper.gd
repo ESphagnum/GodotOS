@@ -1,4 +1,4 @@
-extends BaseApp
+extends Control
 
 signal focused()
 signal unfocused()
@@ -7,8 +7,8 @@ signal minimized()
 signal maximized()
 
 # Обязательное объявление переменной для хранения имени
-var app_name: String = "New App" 
-var config: AppConfig 
+
+@export var config: AppConfig 
 
 @onready var title_label = $NinePatchRect/VBoxContainer/Header_Panel/HBoxContainer/RichTextLabel
 @onready var header = $NinePatchRect/VBoxContainer/Header_Panel
@@ -21,27 +21,27 @@ var old_size = Vector2()
 
 func setup_window(app_config: AppConfig):
 	config = app_config
-	self.app_name = config.app_name
 	
-	# Установка размеров и позиции из конфига
+	# УДАЛИ СТРОКУ: self.app_name = config.app_name
+	# Окно будет брать имя напрямую из config.app_name, когда оно понадобится
+	
 	custom_minimum_size = config.default_size
 	size = config.default_size
 	position = config.default_position
 	
-	# Если прога должна быть скрыта при старте
 	if config.start_minimized:
 		visible = false
 
 func _ready():
-	title_label.text = app_name
+	if config:
+		# Берем имя сразу из конфига, никакой локальной переменной не нужно
+		title_label.text = config.app_name
 	
-	# Регистрируем в системе
 	WindowManager.register_window(self)
 	
-	# Делаем активным, только если оно не свернуто
 	if visible:
 		WindowManager.set_active_window(self)
-
+		
 # Логика перемещения и фокуса
 func _on_header_panel_gui_input(event):
 	if event is InputEventMouseButton:

@@ -2,8 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c3rhmkmujy3s6" path="res://icon.svg" id="1_be5t8"]
 [ext_resource type="Script" uid="uid://b8e87y62kas4r" path="res://core/window_wrapper.gd" id="1_mxwdo"]
+[ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="2_ox2ce"]
 
-[node name="WindowWrapper" type="Control" unique_id=511665333]
+[sub_resource type="Resource" id="Resource_wwbqo"]
+script = ExtResource("2_ox2ce")
+show_in_taskbar = false
+metadata/_custom_type_script = "uid://4jsqd024pcql"
+
+[node name="WindowWrapper" type="Control" unique_id=780942879]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 3
 anchors_preset = 0
@@ -13,7 +19,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 script = ExtResource("1_mxwdo")
-metadata/_custom_type_script = "uid://bhlpshgjlec4l"
+config = SubResource("Resource_wwbqo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1901096869]
 custom_minimum_size = Vector2(500, 300)
