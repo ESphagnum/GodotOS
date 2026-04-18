@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dwcgkeb111tvj" path="res://scenes/Taskbar/Taskbar.tscn" id="1_fsv5x"]
 [ext_resource type="PackedScene" uid="uid://b0q3nipespcy8" path="res://scenes/WindowWrapper.tscn" id="2_h488k"]
+[ext_resource type="PackedScene" uid="uid://bjgv0yu6jx771" path="res://scenes/Taskbar/StartPanel.tscn" id="3_eysme"]
 
 [node name="Desktop" type="Control" unique_id=488378104]
 layout_mode = 3
@@ -44,8 +45,28 @@ grow_vertical = 0
 
 [node name="WindowWrapper" parent="." unique_id=214628049 instance=ExtResource("2_h488k")]
 layout_mode = 1
-anchors_preset = 0
 
 [node name="WindowWrapper2" parent="." unique_id=1615654512 instance=ExtResource("2_h488k")]
 layout_mode = 1
-anchors_preset = 0
+anchors_preset = -1
+anchor_left = 0.36600003
+anchor_top = 0.40600002
+anchor_right = 0.36600003
+anchor_bottom = 0.40600002
+offset_left = 0.27996826
+offset_top = 0.519989
+offset_right = 500.27997
+offset_bottom = 300.52
+
+[node name="StartMenu" parent="." unique_id=1954665718 instance=ExtResource("3_eysme")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.358
+anchor_top = 1.0
+anchor_right = 0.619
+anchor_bottom = 1.6480001
+offset_left = 0.6399536
+offset_right = -0.47998047
+offset_bottom = 0.15991211
+pivot_offset = Vector2(250, 700)
