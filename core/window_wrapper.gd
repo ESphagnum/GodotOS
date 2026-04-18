@@ -70,6 +70,7 @@ func _on_close_button_pressed():
 		visible = false
 		minimized.emit()
 		return
+	closed.emit()
 
 	# Стандартная анимация закрытия
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -77,7 +78,7 @@ func _on_close_button_pressed():
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.3)
 	tween.chain().tween_callback(queue_free)
-	closed.emit()
+	
 
 
 func _on_fullscreen_button_pressed():
@@ -106,5 +107,6 @@ func _gui_input(event):
 		if event.pressed:
 			# Как только нажат любой клик в области окна
 			WindowManager.set_active_window(self)
+			Signals.start_menu_toggled.emit(false)
 			# Если хочешь, чтобы окно сразу выходило вперед:
 			move_to_front.call_deferred()

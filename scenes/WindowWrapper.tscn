@@ -98,7 +98,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "x"
 
-[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer" unique_id=1133696281]
+[node name="Content" type="Control" parent="NinePatchRect/VBoxContainer" unique_id=1133696281]
 layout_mode = 2
 
 [connection signal="gui_input" from="NinePatchRect/VBoxContainer/Header_Panel" to="." method="_on_header_panel_gui_input"]
