@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="1_4k41m"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_4k41m")
 app_name = "Task Manager"
+scene_path = "uid://djd3axpm4tqgd"
 metadata/_custom_type_script = "uid://4jsqd024pcql"
