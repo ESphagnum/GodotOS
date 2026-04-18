@@ -10,39 +10,48 @@ func _ready():
 	# Теперь эта строка будет работать, так как функция объявлена ниже
 	Signals.request_app_launch.connect(launch_app)
 
-func launch_app(scene_path: String, app_name: String):
-	# 1. Загружаем обертку окна
+func launch_app(config: AppConfig):
 	var window_scene = load("res://scenes/WindowWrapper.tscn")
 	var window_instance = window_scene.instantiate()
 	
-	# 2. Устанавливаем заголовок
-	window_instance.app_name = app_name
+	# 1. Передаем настройки
+	window_instance.setup_window(config)
 	
-	# 3. Находим, куда добавить окно в Desktop.tscn
+	# 2. РЕГИСТРИРУЕМ ВРУЧНУЮ (теперь config точно не Nil)
+	register_window(window_instance)
+	
 	var windows_layer = get_tree().root.find_child("WindowsLayer", true, false)
 	if windows_layer:
+		# 3. Добавляем в дерево
 		windows_layer.add_child(window_instance)
 		
-		# 4. Загружаем само приложение (контент)
-		var app_res = load(scene_path)
+		# Загружаем контент проги по пути из конфига
+		var app_res = load(config.scene_path)
 		if app_res:
 			var app_node = app_res.instantiate()
-			# Ищем узел Content внутри WindowWrapper (проверь имя узла в сцене!)
 			var content_node = window_instance.find_child("Content", true, false)
 			if content_node:
 				content_node.add_child(app_node)
 	else:
-		print("Ошибка: WindowsLayer не найден!")
+		printerr("Критическая ошибка: WindowsLayer не найден!")
 
 # Остальные твои функции без изменений...
 func register_window(window):
+	# Если у окна нет конфига — игнорируем его или выводим ошибку, но не падаем
+	if window.config == null:
+		push_warning("Попытка зарегистрировать окно без конфига: ", window.name)
+		return
 	if not windows.has(window):
 		windows.append(window)
 		window.closed.connect(_on_window_closed_started.bind(window))
+		
+		# ПРОВЕРКА: Уходит ли сигнал?
+		if window.config and window.config.show_in_taskbar:
+			print("Отправляю сигнал window_opened для: ", window.config.app_name)
+			Signals.window_opened.emit(window, window.config.app_name)
+		else:
+			print("Окно не должно быть в таскбаре: ", window.config.app_name)
 
-		# Таскбар создаст кнопку только если конфиг это разрешает
-		if window.config.show_in_taskbar:
-			Signals.window_opened.emit(window, window.app_name)
 
 func _on_window_closed_started(window):
 	windows.erase(window)
