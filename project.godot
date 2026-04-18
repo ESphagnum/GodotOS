@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 WindowManager="*uid://er8ua7040fyo"
+Signals="*uid://rt0koebw2h80"
 
 [display]
 
