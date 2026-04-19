@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AppConfig" format=3 uid="uid://cqdtcl84x6shd"]
+
+[ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="1_rkaai"]
+
+[resource]
+script = ExtResource("1_rkaai")
+app_name = "Youtube"
+scene_path = "uid://dq1whg46dyyq1"
+metadata/_custom_type_script = "uid://4jsqd024pcql"
