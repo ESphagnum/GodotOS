@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ctnlmwfewjghc"]
+
+[ext_resource type="Script" uid="uid://bhlpshgjlec4l" path="res://core/BaseApp.gd" id="1_wcxmj"]
+[ext_resource type="PackedScene" uid="uid://cl08v5pv1f6yb" path="res://scenes/WebAppBase/WebAppBase.tscn" id="2_ce2um"]
+
+[node name="YouTubeMusic" type="Control" unique_id=1073732238]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_wcxmj")
+metadata/_custom_type_script = "uid://bhlpshgjlec4l"
+
+[node name="WebAppBase" parent="." unique_id=73612800 instance=ExtResource("2_ce2um")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+DEFAULT_PAGE = "https://music.youtube.com"
+HOME_PAGE = "https://music.youtube.com"
