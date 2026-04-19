@@ -1,9 +1,0 @@
-[11776:13612:0418/210927.221:WARNING:chrome\browser\signin\account_consistency_mode_manager.cc:74] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
-[11776:19156:0418/210927.254:ERROR:chrome\browser\extensions\external_registry_loader_win.cc:147] Missing value path for key Software\Google\Chrome\Extensions\kadaohckdkghfaclhjmkmplebcdcnfnp.
-[11776:13612:0418/210927.266:WARNING:src\gdcef.cpp:275] This is an example warning
-[11776:13612:0418/210929.429:WARNING:src\gdbrowser.cpp:1533] [browser id: 1, name: browser_1] This is an example warning
-[11776:13612:0418/210934.550:WARNING:src\gdcef.cpp:275] This is an example warning
-[11776:13304:0418/210934.848:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
-[11776:13612:0418/210936.658:WARNING:src\gdbrowser.cpp:1533] [browser id: 2, name: browser_2] This is an example warning
-[11776:13304:0418/210956.635:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: QUOTA_EXCEEDED
-[11776:21008:0418/210957.261:INFO:chrome\browser\extensions\extension_garbage_collector.cc:188] Garbage collection for extensions on file thread is complete.
