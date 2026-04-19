@@ -9,13 +9,25 @@ script = ExtResource("1_rvfmv")
 metadata/_custom_type_script = "uid://bhlpshgjlec4l"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1423652103]
+visible = false
 layout_mode = 0
 offset_right = 342.0
 offset_bottom = 185.0
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=99766055]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=424940291]
 layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=859291587]
+layout_mode = 2
+text = "  <-  "
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=99766055]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer" unique_id=1108643474]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_activated" from="VBoxContainer/ItemList" to="." method="_on_item_list_item_activated"]
