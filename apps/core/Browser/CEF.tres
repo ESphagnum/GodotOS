@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AppConfig" format=3 uid="uid://crnaomkycnpmj"]
+
+[ext_resource type="Script" uid="uid://4jsqd024pcql" path="res://core/AppConfig.gd" id="1_p5ocq"]
+
+[resource]
+script = ExtResource("1_p5ocq")
+app_name = "Browser"
+scene_path = "uid://cg0dpkfqho8xs"
+metadata/_custom_type_script = "uid://4jsqd024pcql"
