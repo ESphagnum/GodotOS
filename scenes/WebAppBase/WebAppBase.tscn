@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://cl08v5pv1f6yb"]
+
+[ext_resource type="Script" uid="uid://bfhuulfeyubhe" path="res://core/web_app_base.gd" id="1_lpy0x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3xds"]
+bg_color = Color(0.12, 0.12, 0.14, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="WebAppBase" type="Control" unique_id=798792541]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_lpy0x")
+metadata/_custom_type_script = "uid://bhlpshgjlec4l"
+
+[node name="CEF" type="GdCEF" parent="." unique_id=2066894970]
+
+[node name="Panel" type="Panel" parent="." unique_id=1170782030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j3xds")
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1831929264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="TopBar" type="HBoxContainer" parent="Panel/VBox" unique_id=137659371]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NavButtons" type="HBoxContainer" parent="Panel/VBox/TopBar" unique_id=344903617]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="New" type="Button" parent="Panel/VBox/TopBar/NavButtons" unique_id=1147547690]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+tooltip_text = "Open new tab"
+text = "+"
+
+[node name="Prev" type="Button" parent="Panel/VBox/TopBar/NavButtons" unique_id=2048100001]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+tooltip_text = "Go back"
+text = "◀"
+
+[node name="Next" type="Button" parent="Panel/VBox/TopBar/NavButtons" unique_id=1782814039]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+tooltip_text = "Go forward"
+text = "▶"
+
+[node name="Refresh" type="Button" parent="Panel/VBox/TopBar/NavButtons" unique_id=500690403]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+tooltip_text = "Reload page"
+text = "↻"
+
+[node name="Home" type="Button" parent="Panel/VBox/TopBar/NavButtons" unique_id=1551341111]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+tooltip_text = "Go to homepage"
+text = "⌂"
+
+[node name="Separator2" type="VSeparator" parent="Panel/VBox/TopBar" unique_id=1050198222]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TabLabel" type="Label" parent="Panel/VBox/TopBar" unique_id=1071399473]
+layout_mode = 2
+text = "Tab:"
+
+[node name="BrowserList" type="OptionButton" parent="Panel/VBox/TopBar" unique_id=1571792482]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+tooltip_text = "Select tab"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBox" unique_id=597335111]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+mouse_filter = 0
+expand_mode = 3
+stretch_mode = 3
+
+[node name="BottomBar" type="HBoxContainer" parent="Panel/VBox" unique_id=1288844091]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Options" type="HBoxContainer" parent="Panel/VBox/BottomBar" unique_id=320203630]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RoutingAudio" type="CheckBox" parent="Panel/VBox/BottomBar/Options" unique_id=1540561021]
+layout_mode = 2
+tooltip_text = "Route browser audio through Godot (enables effects)"
+text = "Audio Routing"
+
+[node name="Mute" type="CheckBox" parent="Panel/VBox/BottomBar/Options" unique_id=401062572]
+layout_mode = 2
+tooltip_text = "Mute all audio"
+text = "Mute"
+
+[node name="AddBlocker" type="CheckBox" parent="Panel/VBox/BottomBar/Options" unique_id=1209748983]
+layout_mode = 2
+tooltip_text = "Enable EasyList-based ad blocking"
+button_pressed = true
+text = "Ad Blocker"
+
+[node name="Spacer" type="Control" parent="Panel/VBox/BottomBar" unique_id=1723912887]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Info" type="Label" parent="Panel/VBox/BottomBar" unique_id=1827858058]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="ColorPopup" type="Popup" parent="." unique_id=1664969678]
+size = Vector2i(298, 471)
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorPopup" unique_id=1929565768]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+edit_alpha = false
+presets_visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1527311644]
+
+[node name="AcceptDialog" type="AcceptDialog" parent="." unique_id=110640546]
+
+[connection signal="pressed" from="Panel/VBox/TopBar/NavButtons/New" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="Panel/VBox/TopBar/NavButtons/Prev" to="." method="_on_Prev_pressed"]
+[connection signal="pressed" from="Panel/VBox/TopBar/NavButtons/Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Panel/VBox/TopBar/NavButtons/Refresh" to="." method="_on_refresh_pressed"]
+[connection signal="pressed" from="Panel/VBox/TopBar/NavButtons/Home" to="." method="_on_Home_pressed"]
+[connection signal="item_selected" from="Panel/VBox/TopBar/BrowserList" to="." method="_on_BrowserList_item_selected"]
+[connection signal="gui_input" from="Panel/VBox/TextureRect" to="." method="_on_TextureRect_gui_input"]
+[connection signal="resized" from="Panel/VBox/TextureRect" to="." method="_on_texture_rect_resized"]
+[connection signal="toggled" from="Panel/VBox/BottomBar/Options/RoutingAudio" to="." method="_on_routing_audio_pressed"]
+[connection signal="toggled" from="Panel/VBox/BottomBar/Options/Mute" to="." method="_on_mute_pressed"]
+[connection signal="toggled" from="Panel/VBox/BottomBar/Options/AddBlocker" to="." method="_on_add_blocker_pressed"]
+[connection signal="color_changed" from="ColorPopup/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
